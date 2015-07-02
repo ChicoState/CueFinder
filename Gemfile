@@ -3,8 +3,6 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
-# Use sqlite3 as the database for Active Record
-gem 'mysql2'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -37,10 +35,16 @@ gem 'haml-rails'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
+  gem 'mysql2'
   gem 'byebug'
   gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'guard'
   gem 'guard-livereload'
+end
+
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
 end
 
