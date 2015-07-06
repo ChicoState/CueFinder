@@ -4,4 +4,6 @@
       - group.each do |image|
         .col-md-2
           .thumbnail
-            = image_tag "#{image.split('/').last}"
+            = check_box_tag "#{image.split('/').last}", '1',false, class: 'imgcheck'
+            = label_tag  "#{image.split('/').last}", "" do
+              = image_tag "#{image.split('/').last}"

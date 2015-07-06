@@ -12,8 +12,7 @@ $ ->
 $(document).on "change", ".imgcheck", ->
   if @checked
     console.log("checked")
-    $(this).parents('.thumbnail').css( "border-color", "#f00")
+    $(this).parents().css( "border-color", "#fff")
   else
     console.log("unchecked")
-    $(this).parents('.thumbnail').css( "border-color", "#ddd")
  
