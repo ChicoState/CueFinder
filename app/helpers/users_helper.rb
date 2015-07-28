@@ -1,7 +1,7 @@
 module UsersHelper
 end
 
-def create_all
+def create_all(numUsers = 500)
   @animals = %w(camel 
                chimp 
                horse 
@@ -29,18 +29,23 @@ def create_all
               orange)
 
   @username = Array.new
+  @allUsernames = Array.new
   @password = Array.new
   output = File.open("tmp/users.txt", "a")
 
-  (0..100).each do
+  (1..numUsers).each do
     
-    @username << @colors.shuffle.first << @animals.shuffle.first << rand(9) << rand(9)
+    @password.clear
+    begin
+      @username.clear
+      @username << @colors.shuffle.first << @animals.shuffle.first << rand(9) << rand(9)
+    end while @allUsernames.include? @username.join
+
+    @allUsernames << @username.join
     @password << rand(100000..999999)
 
     output << @username.join << "\t" << @password.join << "\n"
 
-    @password.clear
-    @username.clear
   end
 end
 
