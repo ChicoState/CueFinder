@@ -40,6 +40,7 @@ GEM
     autoprefixer-rails (5.2.1)
       execjs
       json
+    bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     bootstrap-sass (3.3.5)
@@ -50,6 +51,10 @@ GEM
       columnize (= 0.9.0)
     celluloid (0.16.0)
       timers (~> 4.0.0)
+    climate_control (0.0.3)
+      activesupport (>= 3.0)
+    cocaine (0.5.7)
+      climate_control (>= 0.0.3, < 1.0)
     coderay (1.1.0)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
@@ -118,6 +123,7 @@ GEM
       mime-types (>= 1.16, < 3)
     method_source (0.8.2)
     mime-types (2.6.1)
+    mimemagic (0.3.0)
     mini_portile (0.6.2)
     minitest (5.7.0)
     multi_json (1.11.1)
@@ -128,6 +134,12 @@ GEM
     notiffany (0.0.6)
       nenv (~> 0.1)
       shellany (~> 0.0)
+    paperclip (4.3.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      cocaine (~> 0.5.5)
+      mime-types
+      mimemagic (= 0.3.0)
     pg (0.18.2)
     pry (0.10.1)
       coderay (~> 1.1.0)
@@ -171,6 +183,7 @@ GEM
       ffi (>= 0.5.0)
     rdoc (4.2.0)
       json (~> 1.4)
+    rmagick (2.15.2)
     ruby_parser (3.7.0)
       sexp_processor (~> 4.1)
     sass (3.4.15)
@@ -216,6 +229,7 @@ PLATFORMS
 
 DEPENDENCIES
   autoprefixer-rails
+  bcrypt (~> 3.1.7)
   bootstrap-sass
   byebug
   coffee-rails (~> 4.1.0)
@@ -225,9 +239,11 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   mysql2
+  paperclip
   pg
   rails (= 4.2.0)
   rails_12factor
+  rmagick
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   spring
