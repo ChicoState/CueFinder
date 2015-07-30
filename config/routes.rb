@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
+
   root 'static_pages#question'
   get 'pictures' => 'static_pages#pictures'
-  get 'users/create_all' => 'users#create_all'
+  get 'followup' => 'static_pages#followup'
   resources :users
+
+  #get 'users/create_all' => 'users#create_all'
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
