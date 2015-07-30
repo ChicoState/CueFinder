@@ -7,8 +7,8 @@
             = check_box_tag "#{image.split('/').last}", '1',false, class: 'imgcheck'
             = label_tag  "#{image.split('/').last}", "" do
               = image_tag "#{image.split('/').last}"
-  .row
-    .finder-buttons
-      = button_tag "None of These", class: "btn btn-default"
-      = button_tag 'Next <span class="glyphicon glyphicon-chevron-right"></span>'.html_safe, class: "btn btn-default"
-        
+  .row-finder-buttons
+    = button_tag "None of These", class: "btn btn-default", id: 'none'
+    #timer
+    = button_tag 'Next <span class="glyphicon glyphicon-chevron-right"></span>'.html_safe, class: "btn btn-default"
+      
