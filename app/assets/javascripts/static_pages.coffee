@@ -3,11 +3,15 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 (($) ->
-
 ) jQuery
 
 $ -> 
-  console.log("Dom is ready")
+  $('#timer').pietimer {
+    seconds: 10
+    color: 'rgba(200, 200, 200, 0.8)'
+  }, ->
+    console.log("done")
+  $('#timer').pietimer('start')
 
 $(document).on "change", ".imgcheck", ->
   if @checked
@@ -16,4 +20,3 @@ $(document).on "change", ".imgcheck", ->
   else
     console.log("unchecked")
     $(this).parents('.thumbnail').css( "border-color", "#ddd")
- 
