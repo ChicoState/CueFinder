@@ -1,6 +1,15 @@
 .center
   %h3 Do you feel like eating this food right now?
-  = ['I don\'t want it at all', 'I want it a little', 'I want it a lot', 'I need to eat it right now'].each do |question|
-    %br
-      = radio_button_tag 'test', question 
+  = radio_button :followup, "1", "test"
+  I don't want it at all
+  %br
+  = radio_button :followup, "1", "test"
+  I want it a little
+  %br
+  = radio_button :followup, "1", "test"
+  I want it a lot
+  %br
+  = radio_button :followup, "1", "test"
+  I need to eat it right now
+  %br
   = link_to "Ready", pictures_path, class: "btn btn-lg btn-primary"
