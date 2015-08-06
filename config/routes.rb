@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
-  root                    'static_pages#question'
+  root                    'sessions#new'
+
   get     'pictures'  =>  'static_pages#pictures'
+  get     'questions'  =>  'static_pages#questions'
   get     'login'     =>  'sessions#new'
+
   post    'login'     =>  'sessions#create'
   delete  'logout'    =>  'sessions#delete'
 
+  post    'selection' =>  'selection#create'
 
   resources :users
 
