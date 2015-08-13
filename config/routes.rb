@@ -1,15 +1,17 @@
 Rails.application.routes.draw do
-  root                    'sessions#new'
+  root                            'sessions#new'
 
-  get     'pictures'  =>  'static_pages#pictures'
-  get     'questions'  =>  'static_pages#questions'
-  get     'login'     =>  'sessions#new'
+  get     'pictures'          =>  'static_pages#pictures'
+  get     'questions'         =>  'static_pages#questions'
+  get     'login'             =>  'sessions#new'
 
-  post    'login'     =>  'sessions#create'
-  delete  'logout'    =>  'sessions#delete'
+  post    'login'             =>  'sessions#create'
+  delete  'logout'            =>  'sessions#delete'
 
-  post    'selection' =>  'selection#create'
+  post    'SelectionCreate'   =>  'selection#create'
 
+  resources :items
+  resources :finders
   resources :users
 
 
