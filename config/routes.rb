@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   resources :items
   resources :finders
   resources :users
+  resources :mc_questions
+  resources :mc_choices
+  resources :mc_responces
 
 
   # The priority is based upon order of creation: first created -> highest priority.

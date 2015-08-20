@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150813231719) do
+ActiveRecord::Schema.define(version: 20150820161655) do
 
   create_table "finders", force: :cascade do |t|
     t.string   "question",       limit: 255
@@ -38,6 +38,41 @@ ActiveRecord::Schema.define(version: 20150813231719) do
     t.integer  "image_file_size",    limit: 4
     t.datetime "image_updated_at"
   end
+
+  create_table "mc_choices", force: :cascade do |t|
+    t.string   "choice",     limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "mc_choices_questions", id: false, force: :cascade do |t|
+    t.integer "mc_question_id", limit: 4, null: false
+    t.integer "mc_choice_id",   limit: 4, null: false
+  end
+
+  add_index "mc_choices_questions", ["mc_choice_id", "mc_question_id"], name: "index_mc_choices_questions_on_mc_choice_id_and_mc_question_id", using: :btree
+  add_index "mc_choices_questions", ["mc_question_id", "mc_choice_id"], name: "index_mc_choices_questions_on_mc_question_id_and_mc_choice_id", using: :btree
+
+  create_table "mc_questions", force: :cascade do |t|
+    t.string   "prompt",     limit: 255
+    t.integer  "item_id",    limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "mc_questions", ["item_id"], name: "index_mc_questions_on_item_id", using: :btree
+
+  create_table "mc_reponses", force: :cascade do |t|
+    t.integer  "mc_question_id", limit: 4
+    t.integer  "mc_answer_id",   limit: 4
+    t.integer  "user_id",        limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "mc_reponses", ["mc_answer_id"], name: "index_mc_reponses_on_mc_answer_id", using: :btree
+  add_index "mc_reponses", ["mc_question_id"], name: "index_mc_reponses_on_mc_question_id", using: :btree
+  add_index "mc_reponses", ["user_id"], name: "index_mc_reponses_on_user_id", using: :btree
 
   create_table "selections", force: :cascade do |t|
     t.integer  "item_id",    limit: 4

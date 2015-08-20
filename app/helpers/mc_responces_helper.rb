@@ -1,0 +1,2 @@
+module McResponcesHelper
+end
