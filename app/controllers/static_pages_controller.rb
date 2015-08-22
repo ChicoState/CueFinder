@@ -10,4 +10,11 @@ class StaticPagesController < ApplicationController
     @images = @images[0..19].shuffle
     set_image_array @images
   end
+
+  def followup
+    @question = McQuestion.find_by(id: 2)
+    @image = @question.item
+    @choices = @question.mc_choices
+    @response = McResponse.new
+  end
 end

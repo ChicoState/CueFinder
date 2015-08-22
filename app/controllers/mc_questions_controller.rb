@@ -36,9 +36,6 @@ class McQuestionsController < ApplicationController
 
   private
     def question_params
-      params.require(:mc_question).permit(:prompt, :item_id, {:mc_choices => []})
-      #if params.has_key?(:mc_choices)
-      #  attributes[:mc_choices] = params[:mc_choices]
-      #end
+      params.require(:mc_question).permit(:prompt, :item_id, :mc_choice_ids=>[])
     end
 end

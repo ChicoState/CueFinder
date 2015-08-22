@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150820161655) do
+ActiveRecord::Schema.define(version: 20150821224244) do
 
   create_table "finders", force: :cascade do |t|
     t.string   "question",       limit: 255
@@ -62,17 +62,17 @@ ActiveRecord::Schema.define(version: 20150820161655) do
 
   add_index "mc_questions", ["item_id"], name: "index_mc_questions_on_item_id", using: :btree
 
-  create_table "mc_reponses", force: :cascade do |t|
+  create_table "mc_responses", force: :cascade do |t|
     t.integer  "mc_question_id", limit: 4
-    t.integer  "mc_answer_id",   limit: 4
+    t.integer  "mc_choice_id",   limit: 4
     t.integer  "user_id",        limit: 4
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
   end
 
-  add_index "mc_reponses", ["mc_answer_id"], name: "index_mc_reponses_on_mc_answer_id", using: :btree
-  add_index "mc_reponses", ["mc_question_id"], name: "index_mc_reponses_on_mc_question_id", using: :btree
-  add_index "mc_reponses", ["user_id"], name: "index_mc_reponses_on_user_id", using: :btree
+  add_index "mc_responses", ["mc_choice_id"], name: "index_mc_responses_on_mc_choice_id", using: :btree
+  add_index "mc_responses", ["mc_question_id"], name: "index_mc_responses_on_mc_question_id", using: :btree
+  add_index "mc_responses", ["user_id"], name: "index_mc_responses_on_user_id", using: :btree
 
   create_table "selections", force: :cascade do |t|
     t.integer  "item_id",    limit: 4

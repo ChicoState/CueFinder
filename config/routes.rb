@@ -3,19 +3,21 @@ Rails.application.routes.draw do
 
   get     'pictures'          =>  'static_pages#pictures'
   get     'questions'         =>  'static_pages#questions'
+  get     'followup'         =>   'static_pages#followup'
   get     'login'             =>  'sessions#new'
 
   post    'login'             =>  'sessions#create'
   delete  'logout'            =>  'sessions#delete'
 
   post    'SelectionCreate'   =>  'selection#create'
+  post    'SelectionDone'     =>  'selection#done'
 
   resources :items
   resources :finders
   resources :users
   resources :mc_questions
   resources :mc_choices
-  resources :mc_responces
+  resources :mc_responses
 
 
   # The priority is based upon order of creation: first created -> highest priority.

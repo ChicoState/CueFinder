@@ -1,15 +1,11 @@
 .center
-  %h3 Do you feel like eating this food right now?
-  = radio_button :followup, "1", "test"
-  I don't want it at all
-  %br
-  = radio_button :followup, "1", "test"
-  I want it a little
-  %br
-  = radio_button :followup, "1", "test"
-  I want it a lot
-  %br
-  = radio_button :followup, "1", "test"
-  I need to eat it right now
-  %br
-  = link_to "Ready", pictures_path, class: "btn btn-lg btn-primary"
+  %h3
+    = @question.prompt
+  = image_tag(@image.image.url(:thumb))
+  = form_for @response do |f|
+    = f.hidden_field :mc_question_id, :value => @question.id
+    = f.collection_radio_buttons :mc_choice_id, @choices, :id, :choice
+    %br
+    = f.submit "Submit", class: "btn btn-primary"
+
+
