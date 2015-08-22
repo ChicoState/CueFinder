@@ -6,7 +6,7 @@
 ) jQuery
 
 ###   on document load   ###
-$ -> 
+ready = -> 
 
   count = 0
 
@@ -58,3 +58,5 @@ $ ->
         return
     return
 
+$(document).ready ready
+$(document).on 'page:load', ready
