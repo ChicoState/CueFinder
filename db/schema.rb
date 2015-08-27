@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150821224244) do
+ActiveRecord::Schema.define(version: 20150826174514) do
 
   create_table "finders", force: :cascade do |t|
     t.string   "question",       limit: 255
@@ -73,6 +73,16 @@ ActiveRecord::Schema.define(version: 20150821224244) do
   add_index "mc_responses", ["mc_choice_id"], name: "index_mc_responses_on_mc_choice_id", using: :btree
   add_index "mc_responses", ["mc_question_id"], name: "index_mc_responses_on_mc_question_id", using: :btree
   add_index "mc_responses", ["user_id"], name: "index_mc_responses_on_user_id", using: :btree
+
+  create_table "orders", force: :cascade do |t|
+    t.integer  "order",         limit: 4
+    t.integer  "question_id",   limit: 4
+    t.string   "question_type", limit: 255
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "orders", ["question_type", "question_id"], name: "index_orders_on_question_type_and_question_id", using: :btree
 
   create_table "selections", force: :cascade do |t|
     t.integer  "item_id",    limit: 4
