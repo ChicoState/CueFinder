@@ -1,4 +1,7 @@
 class Order < ActiveRecord::Base
-  belongs_to :timeline, :polymorphic => true
-  validates_uniqueness_of :order
+  #belongs_to :questions, :polymorphic => true
+  belongs_to :finders
+  belongs_to :mc_questions
+
+  validates_uniqueness_of :orderable
 end

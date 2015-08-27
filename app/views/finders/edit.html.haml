@@ -1,8 +1,2 @@
 %h1
-  = @finder.question
-.row
-  .col-md6.col-md-offset-3
-    = form_for(@finder) do |f|
-      = f.collection_check_boxes :item_ids, @items, :id, :image_file_name
-      
-      = f.submit "Submit", class: "btn btn-primary"
+= render "form"

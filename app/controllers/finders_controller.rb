@@ -5,6 +5,7 @@ class FindersController < ApplicationController
 
   def new
     @finder = Finder.new
+    @items = Item.all
     @finder.noneEnabled = true
     @finder.multipleChoice = true
     @finder.timed = true

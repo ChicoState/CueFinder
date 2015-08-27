@@ -13,11 +13,16 @@ Rails.application.routes.draw do
   post    'SelectionDone'     =>  'selection#done'
 
   resources :items
-  resources :finders
+  resources :finders do
+    resources :orders, only: [:new, :create, :edit, :update]
+  end
   resources :users
-  resources :mc_questions
+  resources :mc_questions do
+    resources :orders, only: [:new, :create, :edit, :update]
+  end
   resources :mc_choices
   resources :mc_responses
+  resources :orders, only: [:index]
 
 
   # The priority is based upon order of creation: first created -> highest priority.
