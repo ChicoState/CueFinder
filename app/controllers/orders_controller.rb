@@ -6,12 +6,11 @@ class OrdersController < ApplicationController
 
   def new
     @question = finder_or_mc_question
-    @order = @question.build_order
+    @order = Order.new
   end
 
   def create
-    @question = finder_or_mc_question
-    @order = @question.create_order(order_params)
+    @order = Order.new(order_params)
     set_foreign_id(@order)
     if @order.save
       flash[:sucess] = "Added Order"
@@ -54,9 +53,10 @@ class OrdersController < ApplicationController
 
   def set_foreign_id(order)
     if params[:finder_id]
-      order.finder_id = params[:finder_id]
+      order.finder = Finder.find(params[:finder_id])
     else
-      order.mc_question_id = params[:mc_question_id]
+      order.mc_question = McQuestion.find(params[:mc_question_id])
     end
+    return order
   end
 end
