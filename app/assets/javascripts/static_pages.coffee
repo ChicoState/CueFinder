@@ -14,49 +14,53 @@ ready = ->
   $('#timer').pietimer {
     seconds: 10
     color: 'rgba(200, 200, 200, 0.8)'
-  }, ->
-    console.log("done")
+  }, done
   $('#timer').pietimer('start')
 
   ###   change selection color   ###
   $(document).on "change", ".imgcheck", ->
-
     event.preventDefault()
-
-    id = $(this).attr('id')
-
-    row = id.charAt(0)
-    col = id.charAt(1)
-
-    $.ajax
-      url: "/SelectionCreate/?row="+row+"&column="+col
-      type: "post"
-      success: ->
-        console.log 'success'
-        return
-      error: ->
-        console.log 'error'
-        return
-
-    if @checked
-      $(this).parents('.thumbnail').css( "border-color", "#f00")
-    else
-      $(this).parents('.thumbnail').css( "border-color", "#ddd")
+    selection
 
   ###   create selection   ###
   $('#picture_submit').click (event) ->
     event.preventDefault()
+    done
 
-    $.ajax
-      url: "/SelectionDone"
-      type: "post"
-      success: ->
-        console.log 'success'
-        return
-      error: ->
-        console.log 'error'
-        return
-    return
+selection = ->
+
+  id = $(this).attr('id')
+
+  row = id.charAt(0)
+  col = id.charAt(1)
+
+  $.ajax
+    url: "/SelectionCreate/?row="+row+"&column="+col
+    type: "post"
+    success: ->
+      console.log 'success'
+      return
+    error: ->
+      console.log 'error'
+      return
+
+  if @checked
+    $(this).parents('.thumbnail').css( "border-color", "#f00")
+  else
+    $(this).parents('.thumbnail').css( "border-color", "#ddd")
+
+done = ->
+
+  $.ajax
+    url: "/SelectionDone"
+    type: "post"
+    success: ->
+      console.log 'success'
+      return
+    error: ->
+      console.log 'error'
+      return
+  return
 
 $(document).ready ready
 $(document).on 'page:load', ready

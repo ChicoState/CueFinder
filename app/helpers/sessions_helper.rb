@@ -26,19 +26,27 @@ module SessionsHelper
       McQuestion.find_by(id: order.mc_question_id)
     end
   end
+
   
   #Question session data
-  def set_question(question)
-    session[:question_id] = question.id
-    session[:question_type] = question.class
+  def set_cur_question(id)
+    session[:question_id] = id
     set_count
   end
 
-  def current_question
-    @current_question ||= session[:question_type].find_by(id: session[:question_id])
+  def cur_question
+    @cur_question ||= Finder.find_by(id: session[:question_id])
   end
 
   #Item session data
+  def set_render_items(true_or_false)
+    session[:render_images] = true_or_false
+  end
+
+  def render_items
+    session[:render_images]
+  end
+
   def set_image_array(images)
     images.each_with_index do |image, index|
       session[index] = image.id
