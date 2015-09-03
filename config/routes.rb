@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   get 'static_pages/survey'
 
-  root                            'sessions#new'
+  #root                            'sessions#new'
+  root                            'static_pages#survey'
 
   get     'pictures'          =>  'static_pages#pictures'
   get     'questions'         =>  'static_pages#questions'

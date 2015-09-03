@@ -16,15 +16,26 @@ module SessionsHelper
     session.delete(:user_id)
     @current_user = nil
   end
+
+  #Order session data
+  def render_question
+    order = Order.find_by(orderable: current_user.current_question)
+    if order.finder_id
+      Finder.find_by(id: order.finder_id)
+    else
+      McQuestion.find_by(id: order.mc_question_id)
+    end
+  end
   
-  #Finder Question session data
+  #Question session data
   def set_question(question)
-    session[:finder_id] = question.id
+    session[:question_id] = question.id
+    session[:question_type] = question.class
     set_count
   end
 
   def current_question
-    @current_question ||= Finder.find_by(id: session[:finder_id])
+    @current_question ||= session[:question_type].find_by(id: session[:question_id])
   end
 
   #Item session data

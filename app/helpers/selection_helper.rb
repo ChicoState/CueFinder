@@ -10,6 +10,6 @@ module SelectionHelper
   end
 
   def index_of_selection(selection)
-    @index = (selection.row-1)*5+(selection.column-1)
+    (selection.row-1)*5+(selection.column-1)
   end
 end
