@@ -14,6 +14,10 @@ class SelectionController < ApplicationController
     end
   end
 
+  def done
+    render :js => "window.location = '#{pictures_path}'"
+  end
+
   private
   def selection_param
       params.permit(:item_id, :row, :column)

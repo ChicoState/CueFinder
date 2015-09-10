@@ -1,18 +1,32 @@
 Rails.application.routes.draw do
-  root                            'sessions#new'
+  get 'static_pages/survey'
+
+  #root                            'sessions#new'
+  root                            'static_pages#survey'
 
   get     'pictures'          =>  'static_pages#pictures'
   get     'questions'         =>  'static_pages#questions'
+  get     'followup'         =>   'static_pages#followup'
   get     'login'             =>  'sessions#new'
 
   post    'login'             =>  'sessions#create'
   delete  'logout'            =>  'sessions#delete'
 
+  post    'NextQuestion'      =>  'static_pages#next_question'
   post    'SelectionCreate'   =>  'selection#create'
+  post    'SelectionDone'     =>  'selection#done'
 
   resources :items
-  resources :finders
+  resources :finders do
+    resources :orders, only: [:new, :create, :edit, :update]
+  end
   resources :users
+  resources :mc_questions do
+    resources :orders, only: [:new, :create, :edit, :update]
+  end
+  resources :mc_choices
+  resources :mc_responses
+  resources :orders, only: [:index]
 
 
   # The priority is based upon order of creation: first created -> highest priority.
