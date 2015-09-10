@@ -15,7 +15,7 @@ class SelectionController < ApplicationController
   end
 
   def done
-    render :js => "window.location = '#{root_path}'"
+    render :js => "window.location = '#{pictures_path}'"
   end
 
   private

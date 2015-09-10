@@ -20,39 +20,37 @@ ready = ->
   ###   change selection color   ###
   $(document).on "change", ".imgcheck", ->
     event.preventDefault()
-    selection
+
+    id = $(this).attr('id')
+
+    row = id.charAt(0)
+    col = id.charAt(1)
+
+    $.ajax
+      url: "/SelectionCreate/?row="+row+"&column="+col
+      type: "post"
+      success: ->
+        console.log 'success'
+        return
+      error: ->
+        console.log 'error'
+        return
+
+    if @checked
+      $(this).parents('.thumbnail').css( "border-color", "#f00")
+    else
+      $(this).parents('.thumbnail').css( "border-color", "#ddd")
 
   ###   create selection   ###
-  $('#picture_submit').click (event) ->
+  $('#next_button').click (event) ->
     event.preventDefault()
-    done
-
-selection = ->
-
-  id = $(this).attr('id')
-
-  row = id.charAt(0)
-  col = id.charAt(1)
-
-  $.ajax
-    url: "/SelectionCreate/?row="+row+"&column="+col
-    type: "post"
-    success: ->
-      console.log 'success'
-      return
-    error: ->
-      console.log 'error'
-      return
-
-  if @checked
-    $(this).parents('.thumbnail').css( "border-color", "#f00")
-  else
-    $(this).parents('.thumbnail').css( "border-color", "#ddd")
+    done()
+    return
 
 done = ->
 
   $.ajax
-    url: "/SelectionDone"
+    url: "/NextQuestion"
     type: "post"
     success: ->
       console.log 'success'

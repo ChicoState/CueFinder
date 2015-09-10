@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   post    'login'             =>  'sessions#create'
   delete  'logout'            =>  'sessions#delete'
 
+  post    'NextQuestion'      =>  'static_pages#next_question'
   post    'SelectionCreate'   =>  'selection#create'
   post    'SelectionDone'     =>  'selection#done'
 

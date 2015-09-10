@@ -24,6 +24,9 @@ class StaticPagesController < ApplicationController
   end
 
   def next_question
+    if !render_items #render_question the same for pair of question/pictures
+      current_user.update_current_question
+    end
     render :js => "window.location = '#{root_path}'"
   end
 end
