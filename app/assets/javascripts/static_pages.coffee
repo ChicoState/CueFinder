@@ -7,6 +7,8 @@
 
 ###   on document load   ###
 ready = -> 
+  
+  start_of_selections()
 
   count = 0
 
@@ -53,6 +55,19 @@ done = ->
 
   $.ajax
     url: "/NextQuestion"
+    type: "post"
+    success: ->
+      console.log 'success'
+      return
+    error: ->
+      console.log 'error'
+      return
+  return
+
+start_of_selections = ->
+
+  $.ajax
+    url: "/SelectionStart"
     type: "post"
     success: ->
       console.log 'success'

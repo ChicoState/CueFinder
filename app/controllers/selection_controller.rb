@@ -18,6 +18,16 @@ class SelectionController < ApplicationController
     render :js => "window.location = '#{pictures_path}'"
   end
 
+  def start_of_question
+    @selection = Selection.new(row: -1, column: -1,count: -1, selected: 1)
+    user_and_finder(@selection)
+    if @selection.save
+      render :nothing => true
+    else
+      flash[:notice_section_failed] = true
+    end
+  end
+
   private
   def selection_param
       params.permit(:item_id, :row, :column, :local_time)
