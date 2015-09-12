@@ -20,6 +20,6 @@ class SelectionController < ApplicationController
 
   private
   def selection_param
-      params.permit(:item_id, :row, :column)
+      params.permit(:item_id, :row, :column, :local_time)
   end
 end

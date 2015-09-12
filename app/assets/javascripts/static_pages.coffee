@@ -23,11 +23,13 @@ ready = ->
 
     id = $(this).attr('id')
 
+    time = new Date().toISOString().slice(0, 19).replace('T', ' ');
+
     row = id.charAt(0)
     col = id.charAt(1)
 
     $.ajax
-      url: "/SelectionCreate/?row="+row+"&column="+col
+      url: "/SelectionCreate/?row="+row+"&column="+col+"&local_time="+time
       type: "post"
       success: ->
         console.log 'success'
