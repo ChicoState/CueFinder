@@ -4,7 +4,12 @@ module SelectionHelper
     index = index_of_selection(selection)
     selection.item_id = image_id_at_index(index)
     selection.count = current_count
-    puts increment_count
+    increment_count
+    if selection.previous_selected?
+      selection.selected = false
+    else
+      selection.selected = true
+    end
     return selection
   end
 

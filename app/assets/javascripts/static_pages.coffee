@@ -27,6 +27,7 @@ pictures = ->
     timer: 20,
     color: 'rgba(200, 200, 200, 0.8)'
   },done
+  
   $('#timer').pietimer('start')
 
   ###   change selection color   ###
