@@ -1,12 +1,16 @@
 module SelectionHelper
   def session_data(selection)
-    selection.user_id = current_user.id
-    selection.finder_id = cur_question.id
+    user_and_finder(selection)
     index = index_of_selection(selection)
     selection.item_id = image_id_at_index(index)
     selection.count = current_count
     puts increment_count
     return selection
+  end
+
+  def user_and_finder(selection)
+    selection.user_id = current_user.id
+    selection.finder_id = cur_question.id
   end
 
   def index_of_selection(selection)

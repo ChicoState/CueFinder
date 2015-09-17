@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150901005003) do
+ActiveRecord::Schema.define(version: 20150912222736) do
 
   create_table "finders", force: :cascade do |t|
     t.string   "question",       limit: 255
@@ -97,6 +97,8 @@ ActiveRecord::Schema.define(version: 20150901005003) do
     t.integer  "count",      limit: 4
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
+    t.boolean  "selected",   limit: 1
+    t.datetime "local_time"
   end
 
   add_index "selections", ["finder_id"], name: "index_selections_on_finder_id", using: :btree

@@ -7,6 +7,8 @@
 
 ###   on document load   ###
 ready = -> 
+  
+  start_of_selections()
 
   count = 0
 
@@ -23,11 +25,13 @@ ready = ->
 
     id = $(this).attr('id')
 
+    time = new Date().toISOString().slice(0, 19).replace('T', ' ');
+
     row = id.charAt(0)
     col = id.charAt(1)
 
     $.ajax
-      url: "/SelectionCreate/?row="+row+"&column="+col
+      url: "/SelectionCreate/?row="+row+"&column="+col+"&local_time="+time
       type: "post"
       success: ->
         console.log 'success'
@@ -51,6 +55,19 @@ done = ->
 
   $.ajax
     url: "/NextQuestion"
+    type: "post"
+    success: ->
+      console.log 'success'
+      return
+    error: ->
+      console.log 'error'
+      return
+  return
+
+start_of_selections = ->
+
+  $.ajax
+    url: "/SelectionStart"
     type: "post"
     success: ->
       console.log 'success'
