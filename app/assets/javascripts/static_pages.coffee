@@ -10,11 +10,11 @@ ready = ->
   
   start_of_selections()
 
-  count = 0
+  timer = 20
 
   ###   start pietime   ###
   $('#timer').pietimer {
-    seconds: 10
+    seconds: timer
     color: 'rgba(200, 200, 200, 0.8)'
   }, done
   $('#timer').pietimer('start')
