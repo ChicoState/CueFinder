@@ -9,6 +9,7 @@ class StaticPagesController < ApplicationController
   def pictures
     @images = Item.all
     @images = @images[0..19].shuffle
+    @type = :pictures
     set_image_array @images #SessionHelper
   end
 

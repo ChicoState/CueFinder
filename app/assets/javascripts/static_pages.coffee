@@ -5,52 +5,84 @@
 (($) ->
 ) jQuery
 
-###   on document load   ###
 ready = -> 
+  switch $('#page_type').data('type')
+    when 'pictures' then pictures()
+    when 'finder' then finder()
+    when 'followup' then followup()
+    when 'welcome' then welcome()
+    else null
 
-  count = 0
+welcome = ->
+  add_next_button()
+
+finder = ->
+  add_next_button()
+
+pictures = ->
+  add_next_button()
 
   ###   start pietime   ###
   $('#timer').pietimer {
-    seconds: 10
+    timer: 20,
     color: 'rgba(200, 200, 200, 0.8)'
-  }, done
+  },done
+  
   $('#timer').pietimer('start')
 
   ###   change selection color   ###
   $(document).on "change", ".imgcheck", ->
     event.preventDefault()
-
     id = $(this).attr('id')
-
     row = id.charAt(0)
     col = id.charAt(1)
 
-    $.ajax
-      url: "/SelectionCreate/?row="+row+"&column="+col
-      type: "post"
-      success: ->
-        console.log 'success'
-        return
-      error: ->
-        console.log 'error'
-        return
+    select(row,col)
 
     if @checked
       $(this).parents('.thumbnail').css( "border-color", "#f00")
     else
       $(this).parents('.thumbnail').css( "border-color", "#ddd")
 
-  ###   create selection   ###
+followup = ->
+
+#Adds click attribute to a button
+add_next_button = ->
   $('#next_button').click (event) ->
     event.preventDefault()
     done()
     return
 
-done = ->
+#Make a selection
+select = (row, col) ->
+  $.ajax
+    url: "/SelectionCreate/?row="+row+"&column="+col+"&local_time="+time
+    type: "post"
+    success: ->
+      console.log 'success'
+      return
+    error: ->
+      console.log 'error'
+      return
 
+
+#Request to go to next question
+done = ->
   $.ajax
     url: "/NextQuestion"
+    type: "post"
+    success: ->
+      console.log 'success'
+      return
+    error: ->
+      console.log 'error'
+      return
+  return
+
+start_of_selections = ->
+
+  $.ajax
+    url: "/SelectionStart"
     type: "post"
     success: ->
       console.log 'success'

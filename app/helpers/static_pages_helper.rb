@@ -9,6 +9,7 @@ module StaticPagesHelper
 
   def next_view
     if current_user.current_question == 0   #0 order render welcome
+      @type = 'welcome'
       render template: 'static_pages/welcome'
     else                    #>0 order render finder or mc_question
       @next = render_question
@@ -29,13 +30,14 @@ module StaticPagesHelper
   def render_finder
     @finder = @next
     set_cur_question(@finder.id)
+    @type = :finder
     render 'static_pages/questions'
   end
 
   def render_pictures
     @images = cur_question.items
-    #@images = @images[0..19].shuffle
     set_image_array @images #SessionHelper
+    @type = :pictures
     render 'static_pages/pictures'
   end
 
@@ -44,6 +46,7 @@ module StaticPagesHelper
     @image = @question.item
     @choices = @question.mc_choices
     @response = McResponse.new
+    @type = :followup
     render 'static_pages/followup'
   end
 end
