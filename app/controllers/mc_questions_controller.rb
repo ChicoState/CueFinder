@@ -1,6 +1,7 @@
 class McQuestionsController < ApplicationController
   def new
     @items = Item.all
+    @choices = McChoice.all
     @question = McQuestion.new
   end
 
@@ -18,6 +19,7 @@ class McQuestionsController < ApplicationController
   def edit
     @question = McQuestion.find(params[:id])
     @choices = McChoice.all
+    @items = Item.all
   end
 
   def update

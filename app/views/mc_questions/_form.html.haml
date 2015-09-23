@@ -4,6 +4,6 @@
       = f.label :prompt
       = f.text_field :prompt, class: "form-control"
       = f.collection_select  :item_id, @items, :id, :image_file_name, prompt:true, class: "form-control"
+
       = f.collection_check_boxes  :mc_choice_ids, @choices, :id, :choice, class: "form-control"
       = f.submit "Submit",  class: "btn btn-primary"
-
