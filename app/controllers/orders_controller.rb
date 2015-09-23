@@ -21,13 +21,13 @@ class OrdersController < ApplicationController
     end
   end
 
-  def update
+  def edit
     @order = Order.find(params[:id])
     @finders = Finder.all
-    @questions = McQuestions.all
+    @questions = McQuestion.all
   end
 
-  def edit
+  def update
     @order = Order.find(params[:id])
     if @order.update(order_params)
       flash[:sucess] = "Added Order"
