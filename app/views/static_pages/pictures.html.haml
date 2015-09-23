@@ -1,4 +1,5 @@
 = content_tag :div,'', id: "page_type", data: {type: @type}
+= content_tag :div,'', id: "finder_options", data: {noneEnabled: @finder.noneEnabled, multipleChoice: @finder.multipleChoice, timed: @finder.timed}
 .container
   - @images.each_slice(5).with_index do |group, row|
     .row

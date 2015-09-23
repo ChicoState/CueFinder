@@ -35,6 +35,7 @@ module StaticPagesHelper
   end
 
   def render_pictures
+    @finder = @next
     @images = cur_question.items
     set_image_array @images #SessionHelper
     @type = :pictures
