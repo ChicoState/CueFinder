@@ -8,7 +8,7 @@ class McResponsesController < ApplicationController
     @response = McResponse.new(response_param)
     session_data(@response)
     if @response.save
-      redirect_to root_url
+      redirect_to :back
     else
       flash[:failed] = true
     end
