@@ -59,6 +59,7 @@ pictures = ->
     toggle_next_button()
 
 followup = ->
+  add_next_button()
 
 #remove the none button
 remove_none_button = -> 
