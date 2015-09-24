@@ -22,8 +22,10 @@ finder = ->
 pictures = ->
   start_of_selections()
 
-  if !$('finder_options').data('noneenabled')
+  if !$('#finder_options').data('noneenabled')
     remove_none_button()
+  else
+    add_none_button()
 
   add_next_button()
   toggle_next_button()
@@ -44,7 +46,7 @@ pictures = ->
     row = id.charAt(0)
     col = id.charAt(1)
 
-    if $('finder_options').data('multiplechoice')
+    if $('#finder_options').data('multiplechoice')
       multiple_choice(row, col)
     else
       single_choice(this)
@@ -70,12 +72,20 @@ toggle_next_button = ->
   else
     $('#next_button').prop('disabled', false)
 
-#Adds click attribute to a button
+#Adds click attribute to next button
 add_next_button = ->
   $('#next_button').click (event) ->
     event.preventDefault()
     done()
     return
+
+#Adds click attributes to none button
+add_none_button = ->
+  $('#none_button').click (event) ->
+    event.preventDefault()
+    none()
+    return
+  
 
 #Single choice
 single_choice = (selected) ->
@@ -109,6 +119,19 @@ select = (row, col) ->
     error: ->
       console.log 'error'
       return
+
+#Unselects all currently selected images
+none = ->
+  $(':checked').each ->
+    id = $(this).attr('id')
+    row = id.charAt(0)
+    col = id.charAt(1)
+    select(row,col)
+    $(this).prop("checked", false)
+    if @checked
+      $(this).parents('.thumbnail').css( "border-color", "#f00")
+    else
+      $(this).parents('.thumbnail').css( "border-color", "#ddd")
 
 
 #Request to go to next question

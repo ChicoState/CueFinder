@@ -7,7 +7,7 @@ class StaticPagesController < ApplicationController
   end
 
   def pictures
-    @finder = Finder.find(7)
+    @finder = Finder.find(4)
     @images = @finder.items
     @images = @images[0..19].shuffle
     @type = :pictures

@@ -10,7 +10,7 @@
             = label_tag  "#{row+1}#{column+1}", "" do
               = image_tag(image.image.url(:thumb))
   .row-finder-buttons
-    = button_tag "None of These", class: "btn btn-default", id: 'none'
+    = button_tag "None of These", class: "btn btn-default", id: 'none_button'
     #timer
     = button_tag 'Next <span class="glyphicon glyphicon-chevron-right"></span>'.html_safe, class: "btn btn-default", id: "next_button"
       
