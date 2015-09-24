@@ -8,7 +8,7 @@ class McResponsesController < ApplicationController
     @response = McResponse.new(response_param)
     session_data(@response)
     if @response.save
-      redirect_to :back
+      redirect_to "NextQuestion"
     else
       flash[:failed] = true
     end
