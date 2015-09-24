@@ -8,7 +8,7 @@ class McResponsesController < ApplicationController
     @response = McResponse.new(response_param)
     session_data(@response)
     if @response.save
-      render :js => "window.location = '#{root_path}'"
+      redirect_to root_url
     else
       flash[:failed] = true
     end
