@@ -47,7 +47,7 @@ module StaticPagesHelper
     if @question.item
       @image = @question.item
     else
-      @image = Selection.where(finder_id: @question.finder_id, user_id: current_user.id).take.item
+      @image = Selection.where(finder_id: @question.finder_id, user_id: current_user.id, count: 1).take!.item
     end
     @choices = @question.mc_choices
     @response = McResponse.new
