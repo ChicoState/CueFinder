@@ -44,7 +44,11 @@ module StaticPagesHelper
 
   def render_followup
     @question = @next
-    @image = @question.item
+    if @question.item
+      @image = @question.item
+    else
+      @image = Selection.where(finder_id: @question.finder_id, user_id: current_user.id).take.item
+    end
     @choices = @question.mc_choices
     @response = McResponse.new
     @type = :followup

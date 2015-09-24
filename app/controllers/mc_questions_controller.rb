@@ -3,6 +3,7 @@ class McQuestionsController < ApplicationController
     @items = Item.all
     @choices = McChoice.all
     @question = McQuestion.new
+    @finders = Finder.all
   end
 
   def create
@@ -20,6 +21,7 @@ class McQuestionsController < ApplicationController
     @question = McQuestion.find(params[:id])
     @choices = McChoice.all
     @items = Item.all
+    @finders = Finder.all
   end
 
   def update
@@ -38,6 +40,6 @@ class McQuestionsController < ApplicationController
 
   private
     def question_params
-      params.require(:mc_question).permit(:prompt, :item_id, :mc_choice_ids=>[])
+      params.require(:mc_question).permit(:finder_id, :prompt, :item_id, :mc_choice_ids=>[])
     end
 end

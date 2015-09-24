@@ -10,4 +10,8 @@ class Selection < ActiveRecord::Base
       false
     end
   end
+
+  def item
+    Item.find_by id: self.item_id
+  end
 end

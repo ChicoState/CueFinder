@@ -20,6 +20,8 @@ finder = ->
   add_next_button()
 
 pictures = ->
+  start_of_selections()
+
   if !$('finder_options').data('noneenabled')
     remove_none_button()
 
@@ -97,6 +99,7 @@ multiple_choice = (row, col) ->
 
 #Make a selection
 select = (row, col) ->
+  time = new Date().toISOString().slice(0, 19).replace('T', ' ')
   $.ajax
     url: "/SelectionCreate/?row="+row+"&column="+col+"&local_time="+time
     type: "post"
@@ -110,6 +113,13 @@ select = (row, col) ->
 
 #Request to go to next question
 done = ->
+  if !($('finder_options').data('multiplechoice'))
+    $(':checked').each ->
+      id = $(this).attr('id')
+      row = id.charAt(0)
+      col = id.charAt(1)
+      select(row,col)
+
   $.ajax
     url: "/NextQuestion"
     type: "post"
