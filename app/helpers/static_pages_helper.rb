@@ -23,7 +23,7 @@ module StaticPagesHelper
           set_render_items true
           render_finder
         end
-      elsif @next.class == Mc_Question
+      elsif @next.class == McQuestion
         render_followup
       end
     end
