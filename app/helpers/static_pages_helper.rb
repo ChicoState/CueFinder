@@ -13,7 +13,9 @@ module StaticPagesHelper
       render template: 'static_pages/welcome'
     else                    #>0 order render finder or mc_question
       @next = render_question
-      if @next.class == Finder
+      if @next == nil
+        render template: 'static_pages/thankyou'
+      elsif @next.class == Finder
         if render_items #render_question the same for pair of question/pictures
           set_render_items false
           render_pictures
@@ -21,7 +23,7 @@ module StaticPagesHelper
           set_render_items true
           render_finder
         end
-      else
+      elsif @next.class == Mc_Question
         render_followup
       end
     end
