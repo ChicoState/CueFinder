@@ -33,7 +33,7 @@ pictures = ->
   ###   start pietime   ###
   if $('#finder_options').data('timed')
     $('#timer').pietimer {
-      timer: 20,
+      seconds: 15,
       color: 'rgba(200, 200, 200, 0.8)'
     },done
     $('#timer').pietimer('start')
