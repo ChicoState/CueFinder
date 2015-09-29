@@ -1,12 +1,14 @@
 = content_tag :div,'', id: "page_type", data: {type: @type}
-.center
+.center-followup
   %h3
     = @question.prompt
   = image_tag(@image.image.url(:thumb))
-  = form_for @response do |f|
-    = f.hidden_field :mc_question_id, :value => @question.id
-    = f.collection_radio_buttons :mc_choice_id, @choices, :id, :choice
-    %br
-    = f.submit "Submit", class: "btn btn-primary", id: "next_button"
+  .radio-wrapper
+    = form_for @response do |f|
+      = f.hidden_field :mc_question_id, :value => @question.id
+      = f.collection_radio_buttons :mc_choice_id, @choices, :id, :choice do |b|
+        - b.label(class: "radio-inline") { b.radio_button + b.text }
+      %br
+      = f.submit "Submit", class: "btn btn-primary", id: "next_button"
 
 
