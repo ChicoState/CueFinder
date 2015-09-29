@@ -86,7 +86,6 @@ add_none_button = ->
     event.preventDefault()
     none()
     return
-  
 
 #Single choice
 single_choice = (selected) ->
@@ -137,7 +136,7 @@ none = ->
 
 #Request to go to next question
 done = ->
-  if !($('finder_options').data('multiplechoice'))
+  if !($('#finder_options').data('multiplechoice'))
     $(':checked').each ->
       id = $(this).attr('id')
       row = id.charAt(0)
