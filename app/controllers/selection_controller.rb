@@ -19,7 +19,17 @@ class SelectionController < ApplicationController
   end
 
   def start_of_question
-    @selection = Selection.new(row: -1, column: -1,count: -1, selected: 1)
+    @selection = Selection.new(row: -1, column: -1,count: -1, selected: 1, local_time: params[:local_time])
+    user_and_finder(@selection)
+    if @selection.save
+      render :nothing => true
+    else
+      flash[:notice_section_failed] = true
+    end
+  end
+
+  def end_of_question
+    @selection = Selection.new(row: -1, column: -1,count: -1, selected: 0, local_time: params[:local_time])
     user_and_finder(@selection)
     if @selection.save
       render :nothing => true

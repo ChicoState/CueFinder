@@ -143,6 +143,8 @@ done = ->
       col = id.charAt(1)
       select(row,col)
 
+  end_of_selections()
+
   $.ajax
     url: "/NextQuestion"
     type: "post"
@@ -155,8 +157,9 @@ done = ->
   return
 
 start_of_selections = ->
+  time = new Date().toISOString().slice(0, 23).replace('T', ' ')
   $.ajax
-    url: "/SelectionStart"
+    url: "/SelectionStart/?local_time="+time
     type: "post"
     success: ->
       console.log 'success'
@@ -165,6 +168,20 @@ start_of_selections = ->
       console.log 'error'
       return
   return
+
+end_of_selections = ->
+  time = new Date().toISOString().slice(0, 23).replace('T', ' ')
+  $.ajax
+    url: "/SelectionEnd/?local_time="+time
+    type: "post"
+    success: ->
+      console.log 'success'
+      return
+    error: ->
+      console.log 'error'
+      return
+  return
+
 
 $(document).ready ready
 $(document).on 'page:load', ready
