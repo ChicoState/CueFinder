@@ -48,8 +48,10 @@ module StaticPagesHelper
     @question = @next
     if @question.item
       @image = @question.item
-    else
+    elsif @question.finder_id
       @image = Selection.where(finder_id: @question.finder_id, user_id: current_user.id, count: 1).take!.item
+    else
+      @image = nil
     end
     @choices = @question.mc_choices
     @response = McResponse.new
