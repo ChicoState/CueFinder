@@ -33,7 +33,7 @@ pictures = ->
   ###   start pietime   ###
   if $('#finder_options').data('timed')
     $('#timer').pietimer {
-      seconds: 15,
+      seconds: 20,
       color: 'rgba(200, 200, 200, 0.8)'
     },done
     $('#timer').pietimer('start')
@@ -109,7 +109,7 @@ multiple_choice = (row, col) ->
 
 #Make a selection
 select = (row, col) ->
-  time = new Date().toISOString().slice(0, 19).replace('T', ' ')
+  time = new Date().toISOString().slice(0, 23).replace('T', ' ')
   $.ajax
     url: "/SelectionCreate/?row="+row+"&column="+col+"&local_time="+time
     type: "post"
