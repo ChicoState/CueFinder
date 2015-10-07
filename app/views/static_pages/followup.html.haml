@@ -2,7 +2,8 @@
 .center-followup
   %h3
     = @question.prompt
-  = image_tag(@image.image.url(:thumb))
+  - if @image
+    = image_tag(@image.image.url(:thumb))
   .radio-wrapper
     = form_for @response do |f|
       = f.hidden_field :mc_question_id, :value => @question.id
