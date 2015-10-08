@@ -18,6 +18,20 @@ welcome = ->
 
 finder = ->
   add_next_button()
+  document.getElementById('h3').style.visibility = 'hidden'
+  document.getElementById('radio-wrapper').style.visibility = 'hidden'
+
+  if $('#question_timer').data('timer') != null
+    $('#timer').pietimer {
+      seconds: $('#question_timer').data('timer'),
+      color: 'rgba(200, 200, 200, 0)'
+    }, ->
+      document.getElementById('h3').style.visibility = 'visible'
+      document.getElementById('radio-wrapper').style.visibility = 'visible'
+      return
+    $('#timer').pietimer 'start' 
+    
+
 
 pictures = ->
   start_of_selections()
