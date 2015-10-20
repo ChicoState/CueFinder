@@ -14,7 +14,7 @@ ready = ->
     else null
 
 welcome = ->
-  #add_next_button()
+  add_next_button()
 
 followup = ->
   #add_next_button()
@@ -155,7 +155,8 @@ done = ->
       col = id.charAt(1)
       select(row,col)
 
-  end_of_selections()
+  if $('#page_type').data('type') == 'pictures'
+    end_of_selections()
 
   $.ajax
     url: "/NextQuestion"
