@@ -26,6 +26,7 @@ gem 'autoprefixer-rails'
 gem 'haml-rails'
 gem 'rmagick'
 gem 'paperclip'
+gem 'puma'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
