@@ -18,10 +18,11 @@ welcome = ->
 
 followup = ->
   #add_next_button()
-  document.getElementById('h3').style.visibility = 'hidden'
-  document.getElementById('radio-wrapper').style.visibility = 'hidden'
+  toggle_next_button()
 
   if $('#question_timer').data('timer') != null
+    document.getElementById('h3').style.visibility = 'hidden'
+    document.getElementById('radio-wrapper').style.visibility = 'hidden'
     $('#timer').pietimer {
       seconds: $('#question_timer').data('timer'),
       color: 'rgba(200, 200, 200, 0)'
@@ -30,6 +31,9 @@ followup = ->
       document.getElementById('radio-wrapper').style.visibility = 'visible'
       return
     $('#timer').pietimer 'start' 
+
+  $(document).on "change", ".radio", ->
+    toggle_next_button()
     
 pictures = ->
   start_of_selections()
