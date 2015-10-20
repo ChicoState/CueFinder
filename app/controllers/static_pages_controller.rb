@@ -16,7 +16,7 @@ class StaticPagesController < ApplicationController
 
   def followup
     @question = McQuestion.find(6)
-    @type = :finder
+    @type = :followup
     if @question.item
       @image = @question.item
     elsif @question.finder_id

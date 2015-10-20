@@ -16,7 +16,7 @@ ready = ->
 welcome = ->
   add_next_button()
 
-finder = ->
+followup = ->
   add_next_button()
   document.getElementById('h3').style.visibility = 'hidden'
   document.getElementById('radio-wrapper').style.visibility = 'hidden'
@@ -31,8 +31,6 @@ finder = ->
       return
     $('#timer').pietimer 'start' 
     
-
-
 pictures = ->
   start_of_selections()
 
@@ -72,7 +70,7 @@ pictures = ->
 
     toggle_next_button()
 
-followup = ->
+finder = ->
   #add_next_button()
 
 #remove the none button
