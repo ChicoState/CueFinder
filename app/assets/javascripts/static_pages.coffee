@@ -71,7 +71,7 @@ pictures = ->
     toggle_next_button()
 
 finder = ->
-  #add_next_button()
+  add_next_button()
 
 #remove the none button
 remove_none_button = -> 
