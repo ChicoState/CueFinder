@@ -14,10 +14,10 @@ ready = ->
     else null
 
 welcome = ->
-  add_next_button()
+  #add_next_button()
 
 followup = ->
-  add_next_button()
+  #add_next_button()
   document.getElementById('h3').style.visibility = 'hidden'
   document.getElementById('radio-wrapper').style.visibility = 'hidden'
 
