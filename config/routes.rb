@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get     'pictures'          =>  'static_pages#pictures'
   get     'questions'         =>  'static_pages#questions'
   get     'followup'         =>   'static_pages#followup'
+  get     'addusers'          =>  'users#add_users'
 
   get     'login'             =>  'sessions#new'
   post    'login'             =>  'sessions#create'
