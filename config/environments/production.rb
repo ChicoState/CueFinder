@@ -47,6 +47,12 @@ Rails.application.configure do
   # yet still be able to expire them through the digest params.
   config.assets.digest = true
 
+  config.action_controller.asset_host = Proc.new do |source|
+    if source =~ /\b(.png|.jpg)\b/i
+      "d2apa431ehki7q.cloudfront.net"
+    end
+  end
+
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 
   # Specifies the header that your server uses for sending files.

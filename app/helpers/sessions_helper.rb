@@ -20,7 +20,9 @@ module SessionsHelper
   #Order session data
   def render_question
     order = Order.find_by(orderable: current_user.current_question)
-    if order.finder_id
+    if order == nil
+      return order
+    elsif order.finder_id
       Finder.find_by(id: order.finder_id)
     else
       McQuestion.find_by(id: order.mc_question_id)

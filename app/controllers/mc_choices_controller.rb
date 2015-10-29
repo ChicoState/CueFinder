@@ -8,10 +8,10 @@ class McChoicesController < ApplicationController
 
     if @choice.save
       flash[:sucess] = "Added MC Choice"
-      redirect_to(:back)
+      redirect_to root_url
     else
       flash[:error] = "error"
-      redirect_to(:back)
+      redirect_to root_url
     end
   end
 

@@ -49,4 +49,8 @@ def create_all(numUsers = 500)
   end
 end
 
-create_all
+def add_users
+
+end
+
+#create_all

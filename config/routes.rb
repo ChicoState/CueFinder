@@ -7,15 +7,17 @@ Rails.application.routes.draw do
   get     'pictures'          =>  'static_pages#pictures'
   get     'questions'         =>  'static_pages#questions'
   get     'followup'         =>   'static_pages#followup'
-  get     'login'             =>  'sessions#new'
+  get     'addusers'          =>  'users#add_users'
 
+  get     'login'             =>  'sessions#new'
   post    'login'             =>  'sessions#create'
-  delete  'logout'            =>  'sessions#delete'
+  delete  'logout'            =>  'sessions#destroy'
 
   post    'NextQuestion'      =>  'static_pages#next_question'
   post    'SelectionCreate'   =>  'selection#create'
   post    'SelectionDone'     =>  'selection#done'
   post    'SelectionStart'    =>  'selection#start_of_question'
+  post    'SelectionEnd'      =>  'selection#end_of_question'
 
   resources :items
   resources :finders do

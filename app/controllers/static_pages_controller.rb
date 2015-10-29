@@ -7,15 +7,23 @@ class StaticPagesController < ApplicationController
   end
 
   def pictures
-    @images = Item.all
+    @finder = Finder.find(4)
+    @images = @finder.items
     @images = @images[0..19].shuffle
     @type = :pictures
     set_image_array @images #SessionHelper
   end
 
   def followup
-    @question = render_question
-    @image = @question.item
+    @question = McQuestion.find(6)
+    @type = :followup
+    if @question.item
+      @image = @question.item
+    elsif @question.finder_id
+      @image = Selection.where(finder_id: @question.finder_id, user_id: current_user.id, count: 1).take!.item
+    else
+      @image = nil
+    end
     @choices = @question.mc_choices
     @response = McResponse.new
   end
@@ -26,8 +34,10 @@ class StaticPagesController < ApplicationController
 
   def next_question
     if !render_items #render_question the same for pair of question/pictures
+      puts "In render_items"
       current_user.update_current_question
     end
+    puts "after render_items"
     render :js => "window.location = '#{root_path}'"
   end
 end

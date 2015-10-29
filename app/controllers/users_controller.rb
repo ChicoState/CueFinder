@@ -19,6 +19,14 @@ class UsersController < ApplicationController
       render :nothing => true
     end
   end
+
+  def add_users
+    File.open(Rails.root.join('users_perm.txt')).each_line do |line|
+      data = line.split(/\t/)
+      User.create(username: data[0],password: data[1])
+    end
+    render nothing: true
+  end
   
   private
   def user_params
